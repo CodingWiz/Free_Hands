@@ -2,35 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16094c06-7481-470a-a203-5109c90ad076" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/bridj_0_6_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/slf4j_api_1_7_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/webcam_capture_0_3_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Free Hands.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../_config.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/.idea/libraries/bridj_0_6_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/.idea/libraries/slf4j_api_1_7_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/.idea/libraries/webcam_capture_0_3_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/Free Hands.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/src/WebCam$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/src/WebCam$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/src/WebCam$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/src/WebCam$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/src/WebCam$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/src/WebCam$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/src/WebCam$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/src/WebCam.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/src/python.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/test_Pics.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../out/production/Free Hands/test_WatchFolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../src/WebCam.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../src/python.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../src/test_Pics.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../src/test_WatchFolder.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/bridj_0_6_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/bridj_0_6_2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/slf4j_api_1_7_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/slf4j_api_1_7_2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/webcam_capture_0_3_10.xml" afterPath="$PROJECT_DIR$/.idea/libraries/webcam_capture_0_3_10.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,23 +33,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Free Hands Project.iml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Free Hands Project.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="73" lean-forward="true" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebCam.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WebCam.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WebCam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7920">
-              <caret line="348" column="53" lean-forward="true" selection-start-line="348" selection-start-column="53" selection-end-line="348" selection-end-column="53" />
+            <state relative-caret-position="144">
+              <caret line="6" column="49" lean-forward="false" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#6922#7052#0" expanded="true" />
                 <element signature="e#7051#7052#0" expanded="true" />
                 <element signature="e#9391#9561#0" expanded="true" />
@@ -142,6 +106,11 @@
             <path>
               <item name="Free Hands Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Free Hands Project" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Free Hands Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Free Hands Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -155,9 +124,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Modules/Webcam/webcam-capture-0.3.10.jar!/" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/webcam-capture-0.3.10.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
@@ -291,8 +260,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.python" />
-        <item index="1" class="java.lang.String" itemvalue="Application.WebCam" />
+        <item index="0" class="java.lang.String" itemvalue="Application.WebCam" />
+        <item index="1" class="java.lang.String" itemvalue="Python.python" />
       </list>
     </recent_temporary>
   </component>
@@ -314,6 +283,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -336,7 +306,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
@@ -362,7 +331,6 @@
         <state relative-caret-position="8352">
           <caret line="348" column="54" lean-forward="true" selection-start-line="348" selection-start-column="54" selection-end-line="348" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#6922#7052#0" expanded="true" />
             <element signature="e#7051#7052#0" expanded="true" />
             <element signature="e#9391#9561#0" expanded="true" />
@@ -371,17 +339,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebCam.java">
+    <entry file="file://$PROJECT_DIR$/Free Hands Project.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7920">
-          <caret line="348" column="53" lean-forward="true" selection-start-line="348" selection-start-column="53" selection-end-line="348" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6922#7052#0" expanded="true" />
-            <element signature="e#7051#7052#0" expanded="true" />
-            <element signature="e#9391#9561#0" expanded="true" />
-            <element signature="e#9560#9561#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="10" column="73" lean-forward="true" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -393,11 +355,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Free Hands Project.iml">
+    <entry file="file://$PROJECT_DIR$/src/WebCam.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="73" lean-forward="true" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-          <folding />
+        <state relative-caret-position="144">
+          <caret line="6" column="49" lean-forward="false" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+          <folding>
+            <element signature="e#6922#7052#0" expanded="true" />
+            <element signature="e#7051#7052#0" expanded="true" />
+            <element signature="e#9391#9561#0" expanded="true" />
+            <element signature="e#9560#9561#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -459,7 +426,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="bridj-0.6.2">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../Modules/Webcam/libs/bridj-0.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/bridj-0.6.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
