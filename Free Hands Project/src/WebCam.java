@@ -1,4 +1,4 @@
-package src;
+//package src;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -31,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Proof of concept of how to handle WebCam video stream from Java
  *
+ * @author Mohamed H. Guelleh (Astrophysics-Guy)
  * @author Bartosz Firyn (SarXos)
  */
 public class WebCam extends JFrame implements Runnable, WebcamListener, WindowListener, UncaughtExceptionHandler, ItemListener, WebcamDiscoveryListener {
@@ -367,7 +368,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
                     for (int intNumPic = 1; intNumPic <= intMaxPics; intNumPic++) { // Will crash if the path doesn't exist !!!
                         try {
-                            ImageIO.write(webcam.getImage(), "PNG", new File(p.toString() + "/" + strNameFolder + intNumPic + ".png"));
+                            ImageIO.write(webcam.getImage(), "JPEG", new File(p.toString() + "/" + strNameFolder + intNumPic + ".jpg"));
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
