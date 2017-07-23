@@ -49,7 +49,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     private int intMaxPics = 10;
 
     private final String nomApp = "Free Hands"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    private final Path path = Paths.get(System.getProperty("user.home") + "/" + nomApp);
+    private final Path path = Paths.get(System.getProperty("user.home") + System.getProperty("file.separator") + nomApp);
 
     @Override
     public void run() {
@@ -116,8 +116,9 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
         webcam = webcamPicker.getSelectedWebcam();
 
-        if (webcam == null) { // Crash s'il trouve pas des WebCams
+        if (webcam == null) { // Affiche un message d'erreur s'il ne trouve pas des WebCams
             System.out.println("No WebCams found...");
+            JOptionPane.showMessageDialog(null, "No folders found", "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
 
@@ -366,9 +367,9 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                     pm.setMillisToPopup(1);
                     pm.setMillisToDecideToPopup(1);
 
-                    for (int intNumPic = 1; intNumPic <= intMaxPics; intNumPic++) { // Will crash if the path doesn't exist !!!
+                    for (int intNumPic = 1; intNumPic <= intMaxPics; intNumPic++) { // Will crash if the path doesn't exist while taking the pics !!!
                         try {
-                            ImageIO.write(webcam.getImage(), "JPEG", new File(p.toString() + "/" + strNameFolder + intNumPic + ".jpg"));
+                            ImageIO.write(webcam.getImage(), "JPEG", new File(p.toString() + System.getProperty("file.separator") + strNameFolder + intNumPic + ".jpg"));
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
@@ -431,7 +432,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                 }
                 else {
                     if (Files.isDirectory(path)) {
-                        Path p = Paths.get(path.toString() + "/" + strAddFolder);
+                        Path p = Paths.get(path.toString() + System.getProperty("file.separator") + strAddFolder);
                         strMsg = "Please, enter the name you wish to assign to it";
                         strTitle = "Enter name";
 
@@ -515,7 +516,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                 String strRemoveFolder = (String)JOptionPane.showInputDialog(null, "Please, choose a folder name to remove", "Remove folder", JOptionPane.INFORMATION_MESSAGE, null, objList, objList[0]);
                 if (strRemoveFolder != null) {
                     if (Files.isDirectory(path)) {
-                        Path p = Paths.get(path.toString() + "/" + strRemoveFolder);
+                        Path p = Paths.get(path.toString() + System.getProperty("file.separator") + strRemoveFolder);
                         if (Files.isDirectory(p)) delDir(new File(p.toString()), true);
                         else {
                             JOptionPane.showMessageDialog(null, "The folder \"" + p.toString() + "\" has already been erased", "Folder \"" + p.toString() + "\" already deleted", JOptionPane.ERROR_MESSAGE);
