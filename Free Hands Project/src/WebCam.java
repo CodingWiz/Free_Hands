@@ -320,6 +320,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void webcamFound(WebcamDiscoveryEvent event) {
         if (webcamPicker != null) {
             webcamPicker.addItem(event.getWebcam());
@@ -504,7 +505,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
     private void listenerBtnErase() {
         if (Files.isDirectory(path)) {
-            ArrayList<String> arrList = new ArrayList<>();
+            ArrayList<String> arrList = new ArrayList<String>();
 
             for(File file: (new File(path.toString())).listFiles()) if (file.isDirectory()) arrList.add(file.getName());
 

@@ -2,75 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16094c06-7481-470a-a203-5109c90ad076" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/.idea/libraries/bridj_0_6_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/.idea/libraries/slf4j_api_1_7_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/.idea/libraries/webcam_capture_0_3_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/Free Hands.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/src/WebCam$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/src/WebCam$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/src/WebCam$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/src/WebCam$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/src/WebCam$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/src/WebCam$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/src/WebCam$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/src/WebCam.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/src/python.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/test_Pics.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Free Hands/test_WatchFolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test10.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test11.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test12.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test13.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test14.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test15.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test17.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test18.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test19.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test20.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test21.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test22.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test23.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test25.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test26.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test27.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test28.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test29.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test30.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test31.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test33.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test34.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test35.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test36.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test37.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test38.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test39.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test40.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test41.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test42.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test43.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test44.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test45.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test46.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test47.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test49.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test50.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test7.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test8.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test9.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebCam.java" afterPath="$PROJECT_DIR$/src/WebCam.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -93,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/src/python.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+              <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -102,8 +33,8 @@
       <file leaf-file-name="WebCam.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WebCam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1920">
-              <caret line="185" column="51" lean-forward="true" selection-start-line="185" selection-start-column="51" selection-end-line="185" selection-end-column="51" />
+            <state relative-caret-position="167">
+              <caret line="322" column="34" lean-forward="false" selection-start-line="322" selection-start-column="34" selection-end-line="322" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4488#4489#0" expanded="true" />
@@ -124,6 +55,8 @@
                 <element signature="e#8068#8069#0" expanded="true" />
                 <element signature="e#9522#9692#0" expanded="true" />
                 <element signature="e#9691#9692#0" expanded="true" />
+                <element signature="e#9904#9934#0" expanded="true" />
+                <element signature="e#18939#18947#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -140,6 +73,9 @@
       <find>&quot;/&quot;</find>
       <find>No f</find>
       <find>Cras</find>
+      <find>Arra</find>
+      <find>addItem(ev</find>
+      <find>JComb</find>
     </findStrings>
     <replaceStrings>
       <replace>System.getProperty(&quot;file.separator&quot;)</replace>
@@ -189,24 +125,6 @@
           <expand>
             <path>
               <item name="Free Hands Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Free Hands Project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Free Hands Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Free Hands Project" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Free Hands Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Free Hands Project" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Free Hands Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Free Hands Project" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
               <item name="Free Hands Project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -381,7 +299,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="260" y="51" width="1926" height="865" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -396,7 +313,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1421875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1421875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -452,6 +369,8 @@
             <element signature="e#8068#8069#0" expanded="true" />
             <element signature="e#9522#9692#0" expanded="true" />
             <element signature="e#9691#9692#0" expanded="true" />
+            <element signature="e#9904#9934#0" expanded="true" />
+            <element signature="e#18939#18947#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -467,15 +386,15 @@
     <entry file="file://$PROJECT_DIR$/src/python.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WebCam.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="185" column="51" lean-forward="true" selection-start-line="185" selection-start-column="51" selection-end-line="185" selection-end-column="51" />
+        <state relative-caret-position="167">
+          <caret line="322" column="34" lean-forward="false" selection-start-line="322" selection-start-column="34" selection-end-line="322" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4488#4489#0" expanded="true" />
@@ -496,6 +415,8 @@
             <element signature="e#8068#8069#0" expanded="true" />
             <element signature="e#9522#9692#0" expanded="true" />
             <element signature="e#9691#9692#0" expanded="true" />
+            <element signature="e#9904#9934#0" expanded="true" />
+            <element signature="e#18939#18947#0" expanded="true" />
           </folding>
         </state>
       </provider>
