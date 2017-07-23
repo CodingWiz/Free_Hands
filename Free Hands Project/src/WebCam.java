@@ -96,7 +96,6 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
         //setTitle("Java WebCam Capture POC");
         setTitle("Free Hands");
-        setTitle("Free Hands");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
