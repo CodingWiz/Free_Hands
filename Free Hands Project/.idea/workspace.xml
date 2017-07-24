@@ -33,10 +33,9 @@
       <file leaf-file-name="WebCam.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WebCam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="322" column="64" lean-forward="false" selection-start-line="322" selection-start-column="64" selection-end-line="322" selection-end-column="64" />
+            <state relative-caret-position="216">
+              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#4488#4489#0" expanded="true" />
                 <element signature="e#4541#4542#0" expanded="true" />
                 <element signature="e#5083#5084#0" expanded="true" />
@@ -56,7 +55,7 @@
                 <element signature="e#9522#9692#0" expanded="true" />
                 <element signature="e#9691#9692#0" expanded="true" />
                 <element signature="e#9904#9934#0" expanded="true" />
-                <element signature="e#18969#18977#0" expanded="true" />
+                <element signature="e#18968#18976#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -310,7 +309,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -352,7 +351,6 @@
         <state relative-caret-position="8352">
           <caret line="348" column="54" lean-forward="true" selection-start-line="348" selection-start-column="54" selection-end-line="348" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#4488#4489#0" expanded="true" />
             <element signature="e#4541#4542#0" expanded="true" />
             <element signature="e#5083#5084#0" expanded="true" />
@@ -372,7 +370,7 @@
             <element signature="e#9522#9692#0" expanded="true" />
             <element signature="e#9691#9692#0" expanded="true" />
             <element signature="e#9904#9934#0" expanded="true" />
-            <element signature="e#18969#18977#0" expanded="true" />
+            <element signature="e#18968#18976#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -395,10 +393,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WebCam.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="322" column="64" lean-forward="false" selection-start-line="322" selection-start-column="64" selection-end-line="322" selection-end-column="64" />
+        <state relative-caret-position="216">
+          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#4488#4489#0" expanded="true" />
             <element signature="e#4541#4542#0" expanded="true" />
             <element signature="e#5083#5084#0" expanded="true" />
@@ -418,7 +415,7 @@
             <element signature="e#9522#9692#0" expanded="true" />
             <element signature="e#9691#9692#0" expanded="true" />
             <element signature="e#9904#9934#0" expanded="true" />
-            <element signature="e#18969#18977#0" expanded="true" />
+            <element signature="e#18968#18976#0" expanded="true" />
           </folding>
         </state>
       </provider>

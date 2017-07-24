@@ -320,7 +320,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     }
 
     @Override
-    @SuppressWarnings("unchecked") // For when compiling to jar 
+    @SuppressWarnings("unchecked") // For when compiling to jar
     public void webcamFound(WebcamDiscoveryEvent event) {
         if (webcamPicker != null) {
             webcamPicker.addItem(event.getWebcam());
