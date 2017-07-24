@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamDiscoveryEvent;
@@ -22,8 +20,6 @@ import com.github.sarxos.webcam.WebcamListener;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamPicker;
 import com.github.sarxos.webcam.WebcamResolution;
-/*import jdk.nashorn.internal.scripts.JO;
-import org.omg.CORBA.BAD_INV_ORDER;*/
 
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
@@ -32,6 +28,8 @@ import java.util.concurrent.TimeUnit;
  * Proof of concept of how to handle WebCam video stream from Java
  *
  * @author Mohamed H. Guelleh (Astrophysics-Guy)
+ *
+ * adapte code from
  * @author Bartosz Firyn (SarXos)
  */
 public class WebCam extends JFrame implements Runnable, WebcamListener, WindowListener, UncaughtExceptionHandler, ItemListener, WebcamDiscoveryListener {
