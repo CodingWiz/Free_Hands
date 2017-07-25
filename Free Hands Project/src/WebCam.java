@@ -1,5 +1,3 @@
-//package src;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -25,11 +23,9 @@ import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Proof of concept of how to handle WebCam video stream from Java
- *
  * @author Mohamed H. Guelleh (Astrophysics-Guy)
  *
- * adapte code from
+ * adapted code from
  * @author Bartosz Firyn (SarXos)
  */
 public class WebCam extends JFrame implements Runnable, WebcamListener, WindowListener, UncaughtExceptionHandler, ItemListener, WebcamDiscoveryListener {
@@ -46,12 +42,12 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     
     private int intMaxPics = 10;
 
-    private final String nomApp = "Free Hands"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    private final Path path = Paths.get(System.getProperty("user.home") + System.getProperty("file.separator") + nomApp);
+    private final String nomApp = "Free Hands"; // Name of the App
+    private final Path path = Paths.get(System.getProperty("user.home") + System.getProperty("file.separator") + nomApp); // Main working dir
 
     @Override
     public void run() {
-        switch (System.getProperty("file.separator")) { // Check file system
+        /*switch (System.getProperty("file.separator")) { // Check file system, doesn't count for mac (idk honestly), use the one below
             case "/":
                 System.out.println("File system is Linux");
                 break;
@@ -61,12 +57,28 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
             default:
                 System.out.println("Don't know file system");
                 break;
+        }*/
+
+        String os = System.getProperty("os.name"); // Check file system
+        if(os.startsWith("Windows")) {
+            // make the command for windows
+            System.out.println("File system is Windows");
+        }
+        else {
+            if (os.startsWith("Linux")) {
+                // make the command for linux
+                System.out.println("File system is Linux");
+            }
+            else {
+                // make the command for mac
+                System.out.println("File system is Mac");
+            }
         }
 
-        if (!(Files.isDirectory(path))) { // Create main dir
+        if (!(Files.isDirectory(path))) { // Create main working dir
             try {
                 Files.createDirectory(path);
-            } catch (IOException e) {
+            } catch (IOException e) { // Crash
                 e.printStackTrace();
             }
         }
@@ -92,7 +104,6 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
         Webcam.addDiscoveryListener(this);
 
-        //setTitle("Java WebCam Capture POC");
         setTitle("Free Hands");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -113,9 +124,9 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
         webcam = webcamPicker.getSelectedWebcam();
 
-        if (webcam == null) { // Affiche un message d'erreur s'il ne trouve pas des WebCams
+        if (webcam == null) { // Affiche un message d'erreur s'il ne trouve pas de WebCam et quitte
             System.out.println("No WebCams found...");
-            JOptionPane.showMessageDialog(null, "No folders found", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No WebCams found...", "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
 
@@ -124,15 +135,16 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
         webcamPanel = new WebcamPanel(webcam, false);
         webcamPanel.setFPSDisplayed(true);
+        webcamPanel.setFitArea(true); // MEH ...
 
-        JButton btnTakePics = new JButton("Take pics");
+        JButton btnTakePics = new JButton("Take pics & train CNN");
         btnTakePics.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 listenerBtnTakePics();
             }
         });
-        /*btnTakePics.getModel().addChangeListener(new ChangeListener() {
+        /*btnTakePics.getModel().addChangeListener(new ChangeListener() { // Mouse hover
             @Override
             public void stateChanged(ChangeEvent e) {
                 ButtonModel btnM = (ButtonModel) e.getSource();
@@ -140,15 +152,15 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
             }
         });*/
 
-        JButton btnErase = new JButton("Erase Folders");
+        JButton btnErase = new JButton("Delete folder");
         btnErase.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 listenerBtnErase();
             }
         });
-        
-        jLabelMaxPics = new JLabel("Max number for training pics (" + intMaxPics + "): ");
+
+        jLabelMaxPics = new JLabel("Max num for training pics (" + intMaxPics + "): ");
 
         jFormattedTextField = new JFormattedTextField(NumberFormat.getIntegerInstance());
         jFormattedTextField.setPreferredSize(new Dimension(45, 20));
@@ -167,15 +179,21 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
         jComboBox2 = new JComboBox(i);
 
-
         jComboBox3 = new JComboBox(i);*/
 
-
-        JButton btnSubmit = new JButton("Submit number");
+        JButton btnSubmit = new JButton("Submit max number");
         btnSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 listenerBtnSubmit();
+            }
+        });
+
+        JButton btnRetrainCNN = new JButton("Retrain CNN");
+        btnRetrainCNN.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listenerBtnRetrainCNN();
             }
         });
 
@@ -188,6 +206,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
         jPanelTakePics.add(btnErase);
         jPanelTakePics.add(btnTakePics);
+        jPanelTakePics.add(btnRetrainCNN);
         jPanelTakePics.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
         jPanelMaxPics.add(jLabelMaxPics);
@@ -198,8 +217,10 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
         jPanelMaxPics.add(btnSubmit);
         jPanelMaxPics.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        pack();
-        setVisible(true);
+        //pack(); // Use setSize() instead, because it crops out the image; took me a fuck ton of time and found it the hard way
+        setSize(new Dimension(960, 640)); // Height is 2/3 of width
+        setLocationRelativeTo(null); // Center the whole thing
+        setVisible(true); // Self explanatory
 
         Thread t = new Thread() {
 
@@ -504,7 +525,6 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     private void listenerBtnErase() {
         if (Files.isDirectory(path)) {
             ArrayList<String> arrList = new ArrayList<String>();
-
             for(File file: (new File(path.toString())).listFiles()) if (file.isDirectory()) arrList.add(file.getName());
 
             if (arrList.size() != 0) {
@@ -517,7 +537,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                         Path p = Paths.get(path.toString() + System.getProperty("file.separator") + strRemoveFolder);
                         if (Files.isDirectory(p)) delDir(new File(p.toString()), true);
                         else {
-                            JOptionPane.showMessageDialog(null, "The folder \"" + p.toString() + "\" has already been erased", "Folder \"" + p.toString() + "\" already deleted", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "The folder \"" + p.toString() + "\" has already been erased", "Folder \"" + strRemoveFolder + "\" already deleted", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     else {
@@ -529,6 +549,40 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
             else JOptionPane.showMessageDialog(null, "No folders found", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else {
+            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
+    }
+
+    private void listenerBtnRetrainCNN() {
+        if (Files.isDirectory(path)) {
+            ArrayList<String> arrList = new ArrayList<String>();
+            for (File file : (new File(path.toString())).listFiles()) if (file.isDirectory()) arrList.add(file.getName());
+
+            if (arrList.size() != 0) {
+                Collections.sort(arrList);
+                //Collections.reverse(arrList);
+                Object[] objList = arrList.toArray(new Object[arrList.size()]);
+                String strTrainFolder = (String) JOptionPane.showInputDialog(null, "Please, choose a folder name to train the CNN on", "Train folder", JOptionPane.INFORMATION_MESSAGE, null, objList, objList[0]);
+                if (strTrainFolder != null) {
+                    if (Files.isDirectory(path)) {
+                        Path p = Paths.get(path.toString() + System.getProperty("file.separator") + strTrainFolder);
+                        if (Files.isDirectory(p)) { // Train the CNN with retrain.py file
+                            //System.out.println("Training...");
+                            System.out.println(WebcamResolution.VGA.getSize() + "Webcam size");
+                            System.out.println(getContentPane().getSize() + " Content pane");
+                            System.out.println(getSize() + " No content pane");
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "The training folder \"" + p.toString() + "\" has been erased", "Training folder \"" + strTrainFolder + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                        System.exit(1);
+                    }
+                }
+            } else JOptionPane.showMessageDialog(null, "No folders found", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
             JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
