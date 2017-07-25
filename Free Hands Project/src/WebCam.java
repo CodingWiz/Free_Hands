@@ -321,7 +321,9 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                 webcamPanel.setFPSDisplayed(true);
 
                 add(webcamPanel, BorderLayout.CENTER);
-                pack();
+
+                pack(); // You need this when changing WebCams, but it will crop out the image. So use it along setSize() but place the latter after pack()
+                setSize(new Dimension(960, 640));
 
                 Thread t = new Thread() {
 
@@ -339,7 +341,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     }
 
     @Override
-    @SuppressWarnings("unchecked") // For when compiling to jar
+    @SuppressWarnings("unchecked") // Suppressed warning for when compiling to jar
     public void webcamFound(WebcamDiscoveryEvent event) {
         if (webcamPicker != null) {
             webcamPicker.addItem(event.getWebcam());
@@ -424,7 +426,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     
     private void listenerBtnSubmit() {
         final String strJLabelResponse = jFormattedTextField.getText().replace(",", "").trim();
-        int i = Integer.parseInt(((!strJLabelResponse.equals("")) ? strJLabelResponse : "0")), maxPic = 2000;
+        int i = Integer.parseInt(((!strJLabelResponse.equals("")) ? strJLabelResponse : "0")), maxPic = 134217726;
 
         if (i < 1) JOptionPane.showMessageDialog(null, "Number of pics must be greater than 0", "Can't take 0 pics...common sense bro", JOptionPane.ERROR_MESSAGE);
         else if (i > maxPic) JOptionPane.showMessageDialog(null, "Number of pics must be equal or less than " + maxPic, "TOO...MUCH...DATA...", JOptionPane.ERROR_MESSAGE);
@@ -478,11 +480,11 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                                                 takePics(p, strAddFolder);
                                             }
                                             /*else {
-                                                JOptionPane.showMessageDialog(null, "The folder \"" + p.toString() + "\" has already been erased", "Folder \"" + p.toString() + "\" already deleted", JOptionPane.ERROR_MESSAGE);
+                                                JOptionPane.showMessageDialog(null, "The folder \"" + p.toString() + "\" has already been erased", "Folder \"" + p.getFileName().toString() + "\" already deleted", JOptionPane.ERROR_MESSAGE);
                                             } */
                                         }
                                         else {
-                                            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                                            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
                                             System.exit(1);
                                         }
                                     }
@@ -496,7 +498,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                         }
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
                         System.exit(1);
                     }
                 }
@@ -541,7 +543,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                         }
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
                         System.exit(1);
                     }
                 }
@@ -549,7 +551,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
             else JOptionPane.showMessageDialog(null, "No folders found", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
     }
@@ -569,7 +571,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                         Path p = Paths.get(path.toString() + System.getProperty("file.separator") + strTrainFolder);
                         if (Files.isDirectory(p)) { // Train the CNN with retrain.py file
                             //System.out.println("Training...");
-                            System.out.println(WebcamResolution.VGA.getSize() + "Webcam size");
+                            System.out.println(WebcamResolution.VGA.getSize() + "WebCam size");
                             System.out.println(getContentPane().getSize() + " Content pane");
                             System.out.println(getSize() + " No content pane");
                         }
@@ -577,13 +579,13 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                             JOptionPane.showMessageDialog(null, "The training folder \"" + p.toString() + "\" has been erased", "Training folder \"" + strTrainFolder + "\" deleted", JOptionPane.ERROR_MESSAGE);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
                         System.exit(1);
                     }
                 }
             } else JOptionPane.showMessageDialog(null, "No folders found", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
     }
