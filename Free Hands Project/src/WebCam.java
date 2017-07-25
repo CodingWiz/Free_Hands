@@ -160,7 +160,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
             }
         });
 
-        jLabelMaxPics = new JLabel("Max num for training pics (" + intMaxPics + "): ");
+        jLabelMaxPics = new JLabel("Max number for training pics (" + intMaxPics + "): ");
 
         jFormattedTextField = new JFormattedTextField(NumberFormat.getIntegerInstance());
         jFormattedTextField.setPreferredSize(new Dimension(45, 20));
