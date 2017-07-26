@@ -40,7 +40,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     private JFormattedTextField jFormattedTextField = null;
     //private JComboBox jComboBox1 = null, jComboBox2 = null, jComboBox3 = null;
     
-    private int intMaxPics = 50;
+    private int intMaxPics = 200;
 
     private final String nomApp = "Free Hands"; // Name of the App
     private final Path path = Paths.get(System.getProperty("user.home") + System.getProperty("file.separator") + nomApp); // Main working dir
@@ -203,7 +203,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
         add(jPanelBorderSouth, BorderLayout.SOUTH);
 
         jPanelBorderSouth.add(jPanelMaxPics, BorderLayout.WEST);
-        jPanelBorderSouth.add(jPanelTakePics, BorderLayout.EAST);
+        jPanelBorderSouth.add(jPanelTakePics, BorderLayout.EAST); // If you make it CENTER, the 3 buttons will be grouped closely at the center and not separated from each other
 
         jPanelTakePics.add(btnErase);
         jPanelTakePics.add(btnRetrainCNN);
@@ -360,6 +360,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                long start = System.nanoTime();
                 boolean blnCanceled = false;
 
                 ProgressMonitor pm = new ProgressMonitor(getParent(), "Initializing...", "", 1, 5);
@@ -389,15 +390,29 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                     pm.setMillisToPopup(1);
                     pm.setMillisToDecideToPopup(1);
 
-                    for (int intNumPic = 1; intNumPic <= intMaxPics; intNumPic++) { // Will crash if the path doesn't exist while taking the pics !!!
-                        try {
-                            ImageIO.write(webcam.getImage(), "JPEG", new File(p.toString() + System.getProperty("file.separator") + strNameFolder + intNumPic + ".jpg"));
-                        } catch (IOException e1) { // Crash
-                            e1.printStackTrace();
-                        }
+                    for (int intNumPic = 1; intNumPic <= intMaxPics; intNumPic++) {
+                        if (Files.exists(path)) {
+                            if (Files.exists(p)) {
+                                try {
+                                    ImageIO.write(webcam.getImage(), "JPEG", new File(p.toString() + System.getProperty("file.separator") + strNameFolder + intNumPic + ".jpg")); // The App will Crash if it's in the try and the folder is deleted at that precise moment, or if the folder is deleted forcefully with -rf while the App is taking the pics
+                                } catch (IOException e1) {
+                                    e1.printStackTrace();
+                                }
 
-                        pm.setProgress(intNumPic);
-                        pm.setNote(intNumPic + " of " + intMaxPics + " (" + (intNumPic * 100 / intMaxPics) + " %)");
+                                pm.setProgress(intNumPic);
+                                pm.setNote(intNumPic + " of " + intMaxPics + " (" + (intNumPic * 100 / intMaxPics) + " %)");
+                            }
+                            else {
+                                pm.setProgress(intMaxPics);
+                                System.out.println("Break and taking pics canceled at " + intNumPic);
+                                JOptionPane.showMessageDialog(null, "<html>The folder \"" + p.toString() + "\" has been <b><u><i>ERASED</i></u></b></html>", "Folder \"" + strNameFolder + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                                break;
+                            }
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "<html>The main folder \"" + path.toString() + "\" has been <b><u><i>ERASED</i></u></b></html>\n<html>Please <b><u><i>RELAUNCH</i></u></b> the program to assure it's working correctly</html>\n<html><b><u><i>EXITING</i></u></b> the software <b><u><i>NOW</i></u></b> ...</html>", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                            System.exit(1);
+                        }
 
                         if (pm.isCanceled()) {
                             pm.setProgress(intMaxPics);
@@ -407,6 +422,8 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                     }
                     pm.close();
                 }
+                long end = System.nanoTime();
+                System.out.println((end-start)/1000000);
             }
         });
         thread.setName("Taking pics");
@@ -448,7 +465,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
             try {
                 if (strAddFolder.equals("") || strAddFolder == null || strAddFolder.length() < 0) {
-                    strMsg = "<html>You didn't <b><u><i>ENTER ANYTHING</i></u></b></html>\n<html>Please, enter a <b><u><i>NAME</i></u></b> you wish to assign to it:</html>";
+                    strMsg = "<html>You <b><u><i>DID NOT ENTER ANYTHING</i></u></b></html>\n<html>Please, enter a <b><u><i>NAME</i></u></b> you wish to assign to it:</html>";
                     strTitle = "Error";
                     blnEmptyName = true;
                 }
@@ -471,7 +488,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                             try {
                                 if (!isDirEmpty(p)) { // Verifie si le Dir contient des files
                                     Object[] o = {"yes, burn them to the ground", "OH HELL NO, GET ME OUTTA HERE"};
-                                    int i = JOptionPane.showOptionDialog(null,"<html> Directory \"" + p.toString() + "\" is not <b><i><u>EMPTY</u></i></b></html>\n<html>Do you wish to <b><i><u>ERASE ALL FILES</u></i></b> in it ?</html>", "Directory " + p.getFileName().toString() + " not empty", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, o, o[1]);
+                                    int i = JOptionPane.showOptionDialog(null,"<html> Directory \"" + p.toString() + "\" is not <b><i><u>EMPTY</u></i></b></html>\n<html>Do you wish to <b><i><u>ERASE ALL FILES</u></i></b> in it ?</html>", "Directory \"" + p.getFileName().toString() + "\" not empty", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, o, o[1]);
 
                                     if (i == 0) { // Else, retourne au showInputDialog() plus haut juste apres la loop
                                         if (Files.isDirectory(path)) {
@@ -506,7 +523,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
                 if (blnEmptyName) m = JOptionPane.ERROR_MESSAGE;
                 else m = JOptionPane.QUESTION_MESSAGE; // Kinda fast to see, but meh
-            } catch (NullPointerException e) {
+            } catch (NullPointerException e) { // Exit the loop and doesn't throw error when press "cancel" or the X
                 break;
             }
         }
