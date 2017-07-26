@@ -360,7 +360,6 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                long start = System.nanoTime();
                 boolean blnCanceled = false;
 
                 ProgressMonitor pm = new ProgressMonitor(getParent(), "Initializing...", "", 1, 5);
@@ -422,8 +421,6 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                     }
                     pm.close();
                 }
-                long end = System.nanoTime();
-                System.out.println((end-start)/1000000);
             }
         });
         thread.setName("Taking pics");
