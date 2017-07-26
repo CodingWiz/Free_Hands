@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16094c06-7481-470a-a203-5109c90ad076" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Free Hands Project/WebCam$6.class" afterPath="$PROJECT_DIR$/out/production/Free Hands Project/WebCam$6.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Free Hands Project/WebCam$7.class" afterPath="$PROJECT_DIR$/out/production/Free Hands Project/WebCam$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Free Hands Project/WebCam.class" afterPath="$PROJECT_DIR$/out/production/Free Hands Project/WebCam.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebCam.java" afterPath="$PROJECT_DIR$/src/WebCam.java" />
     </list>
@@ -27,8 +25,8 @@
       <file leaf-file-name="WebCam.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WebCam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="165" column="145" lean-forward="false" selection-start-line="165" selection-start-column="145" selection-end-line="165" selection-end-column="145" />
+            <state relative-caret-position="513">
+              <caret line="380" column="62" lean-forward="false" selection-start-line="380" selection-start-column="62" selection-end-line="380" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6996#6997#0" expanded="true" />
@@ -487,8 +485,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WebCam.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="165" column="145" lean-forward="false" selection-start-line="165" selection-start-column="145" selection-end-line="165" selection-end-column="145" />
+        <state relative-caret-position="513">
+          <caret line="380" column="62" lean-forward="false" selection-start-line="380" selection-start-column="62" selection-end-line="380" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6996#6997#0" expanded="true" />

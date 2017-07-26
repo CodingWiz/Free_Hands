@@ -373,12 +373,12 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                         e.printStackTrace();
                     }
                     pm.setProgress(intSec);
-                    pm.setNote("Taking pics in " + (6 - intSec) + "s");
+                    pm.setNote("Taking pics in " + (5 - intSec) + "s");
 
                     if (pm.isCanceled()) {
                         blnCanceled = true;
                         pm.setProgress(5);
-                        System.out.println("Canceled at " + (6 - intSec));
+                        System.out.println("Canceled at " + (5 - intSec));
                         break;
                     }
                 }
