@@ -40,7 +40,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     private JFormattedTextField jFormattedTextField = null;
     //private JComboBox jComboBox1 = null, jComboBox2 = null, jComboBox3 = null;
     
-    private int intMaxPics = 10;
+    private int intMaxPics = 50;
 
     private final String nomApp = "Free Hands"; // Name of the App
     private final Path path = Paths.get(System.getProperty("user.home") + System.getProperty("file.separator") + nomApp); // Main working dir
@@ -124,7 +124,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
         webcam = webcamPicker.getSelectedWebcam();
 
-        if (webcam == null) { // Affiche un message d'erreur s'il ne trouve pas de WebCam et quitte
+        if (webcam == null) { // Affiche un message d'erreur s'il ne trouve pas de WebCam et quitte l'App
             System.out.println("No WebCams found...");
             JOptionPane.showMessageDialog(null, "No WebCams found...", "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
@@ -152,7 +152,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
             }
         });*/
 
-        JButton btnErase = new JButton("Delete folder");
+        JButton btnErase = new JButton("Delete folder & train CNN");
         btnErase.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -160,9 +160,10 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
             }
         });
 
-        jLabelMaxPics = new JLabel("Max number for training pics (" + intMaxPics + "): ");
+        jLabelMaxPics = new JLabel();
+        jLabelMaxPics.setText("<html><b><u><i>MAX NUMBER</i></u></b> for training pics (" + intMaxPics + "): </html>");
 
-        jFormattedTextField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+        jFormattedTextField = new JFormattedTextField(NumberFormat.getIntegerInstance()); // Throws error which may Crash when paste number in it
         jFormattedTextField.setPreferredSize(new Dimension(45, 20));
 
         /*String[] i = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -189,11 +190,11 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
             }
         });
 
-        JButton btnRetrainCNN = new JButton("Retrain CNN");
+        JButton btnRetrainCNN = new JButton("Train CNN");
         btnRetrainCNN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                listenerBtnRetrainCNN();
+                listenerBtnTrainCNN();
             }
         });
 
@@ -205,9 +206,9 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
         jPanelBorderSouth.add(jPanelTakePics, BorderLayout.EAST);
 
         jPanelTakePics.add(btnErase);
-        jPanelTakePics.add(btnTakePics);
         jPanelTakePics.add(btnRetrainCNN);
-        jPanelTakePics.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        jPanelTakePics.add(btnTakePics);
+        jPanelTakePics.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         jPanelMaxPics.add(jLabelMaxPics);
         jPanelMaxPics.add(jFormattedTextField);
@@ -218,7 +219,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
         jPanelMaxPics.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         //pack(); // Use setSize() instead, because it crops out the image; took me a fuck ton of time and found it the hard way
-        setSize(new Dimension(960, 640)); // Height is 2/3 of width
+        setSize(new Dimension(1010, 674)); // Height is ~ 2/3 of width
         setLocationRelativeTo(null); // Center the whole thing
         setVisible(true); // Self explanatory
 
@@ -323,7 +324,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                 add(webcamPanel, BorderLayout.CENTER);
 
                 pack(); // You need this when changing WebCams, but it will crop out the image. So use it along setSize() but place the latter after pack()
-                setSize(new Dimension(960, 640));
+                setSize(new Dimension(1010, 674)); // Height is ~ 2/3 of width
 
                 Thread t = new Thread() {
 
@@ -368,16 +369,16 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                 for (int intSec = 1; intSec <= 5; intSec++) { // Countdown for the user to adjust
                     try {
                         TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e) {
+                    } catch (InterruptedException e) { // Crash
                         e.printStackTrace();
                     }
                     pm.setProgress(intSec);
-                    pm.setNote("Taking pics in " + (5 - intSec) + "s");
+                    pm.setNote("Taking pics in " + (6 - intSec) + "s");
 
                     if (pm.isCanceled()) {
                         blnCanceled = true;
                         pm.setProgress(5);
-                        System.out.println("Canceled at " + (5 - intSec));
+                        System.out.println("Canceled at " + (6 - intSec));
                         break;
                     }
                 }
@@ -391,7 +392,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                     for (int intNumPic = 1; intNumPic <= intMaxPics; intNumPic++) { // Will crash if the path doesn't exist while taking the pics !!!
                         try {
                             ImageIO.write(webcam.getImage(), "JPEG", new File(p.toString() + System.getProperty("file.separator") + strNameFolder + intNumPic + ".jpg"));
-                        } catch (IOException e1) {
+                        } catch (IOException e1) { // Crash
                             e1.printStackTrace();
                         }
 
@@ -428,17 +429,17 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
         final String strJLabelResponse = jFormattedTextField.getText().replace(",", "").trim();
         int i = Integer.parseInt(((!strJLabelResponse.equals("")) ? strJLabelResponse : "0")), maxPic = 134217726;
 
-        if (i < 1) JOptionPane.showMessageDialog(null, "Number of pics must be greater than 0", "Can't take 0 pics...common sense bro", JOptionPane.ERROR_MESSAGE);
-        else if (i > maxPic) JOptionPane.showMessageDialog(null, "Number of pics must be equal or less than " + maxPic, "TOO...MUCH...DATA...", JOptionPane.ERROR_MESSAGE);
+        if (i < 50) JOptionPane.showMessageDialog(null, "<html>Number of pics must be <b><u><i>GREATER THAN</i> 49</u></b> or may cause <b><u><i>ISSUES</i></u></b> with the CNN</html>", "May cause issues with the CNN", JOptionPane.ERROR_MESSAGE); // It's croping out the number when it's in italic, so change it to NOT ITALIC
+        else if (i > maxPic) JOptionPane.showMessageDialog(null, "<html>Number of pics must be <b><u><i>EQUAL OR LESS THAN</i> " + maxPic + "</u></b> <html>", "TOO...MUCH...DATA...", JOptionPane.ERROR_MESSAGE); // It's croping out the number when it's in italic, so change it to NOT ITALIC
         else {
             intMaxPics = i;
-            jLabelMaxPics.setText("Max number for training pics (" + intMaxPics + "): ");
+            jLabelMaxPics.setText("<html><b><u><i>MAX NUMBER</i></u></b> for training pics (" + intMaxPics + "): </html>");
         }
     }
     
     private void listenerBtnTakePics() {
         boolean blnStayLoop = true;
-        String strMsg = "Please, enter the name you wish to assign to it", strTitle = "Enter name";
+        String strMsg = "Please, enter a name you wish to assign to it", strTitle = "Enter name";
         int m = JOptionPane.QUESTION_MESSAGE;
 
         while (blnStayLoop) {
@@ -447,14 +448,14 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
 
             try {
                 if (strAddFolder.equals("") || strAddFolder == null || strAddFolder.length() < 0) {
-                    strMsg = "You didn't enter anything\n" + "Please, enter the name you wish to assign to it:";
+                    strMsg = "<html>You didn't <b><u><i>ENTER ANYTHING</i></u></b></html>\n<html>Please, enter a <b><u><i>NAME</i></u></b> you wish to assign to it:</html>";
                     strTitle = "Error";
                     blnEmptyName = true;
                 }
                 else {
                     if (Files.isDirectory(path)) {
                         Path p = Paths.get(path.toString() + System.getProperty("file.separator") + strAddFolder);
-                        strMsg = "Please, enter the name you wish to assign to it";
+                        strMsg = "Please, enter a name you wish to assign to it";
                         strTitle = "Enter name";
 
                         if (!(Files.isDirectory(p))) { // Creates Dir and takePics()
@@ -470,9 +471,9 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                             try {
                                 if (!isDirEmpty(p)) { // Verifie si le Dir contient des files
                                     Object[] o = {"yes, burn them to the ground", "OH HELL NO, GET ME OUTTA HERE"};
-                                    int i = JOptionPane.showOptionDialog(null,"Directory \"" + p.toString() + "\" is not EMPTY\nDo you wish to ERASE ALL FILES in it ?", "Directory not empty", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, o, o[1]);
+                                    int i = JOptionPane.showOptionDialog(null,"<html> Directory \"" + p.toString() + "\" is not <b><i><u>EMPTY</u></i></b></html>\n<html>Do you wish to <b><i><u>ERASE ALL FILES</u></i></b> in it ?</html>", "Directory " + p.getFileName().toString() + " not empty", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, o, o[1]);
 
-                                    if (i == 0) { // Else, retourne au showInputDialog() plus haut
+                                    if (i == 0) { // Else, retourne au showInputDialog() plus haut juste apres la loop
                                         if (Files.isDirectory(path)) {
                                             if (Files.isDirectory(p)) {
                                                 blnStayLoop = false;
@@ -484,7 +485,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                                             } */
                                         }
                                         else {
-                                            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                                            JOptionPane.showMessageDialog(null, "<html>The main folder \"" + path.toString() + "\" has been <b><u><i>ERASED</i></u></b></html>\n<html>Please <b><u><i>RELAUNCH</i></u></b> the program to assure it's working correctly</html>\n<html><b><u><i>EXITING</i></u></b> the software <b><u><i>NOW</i></u></b> ...</html>", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
                                             System.exit(1);
                                         }
                                     }
@@ -492,13 +493,13 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                                     blnStayLoop = false;
                                     takePics(p, strAddFolder);
                                 }
-                            } catch (IOException e) {
+                            } catch (IOException e) { // Crash
                                 e.printStackTrace();
                             }
                         }
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "<html>The main folder \"" + path.toString() + "\" has been <b><u><i>ERASED</i></u></b></html>\n<html>Please <b><u><i>RELAUNCH</i></u></b> the program to assure it's working correctly</html>\n<html><b><u><i>EXITING</i></u></b> the software <b><u><i>NOW</i></u></b> ...</html>", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
                         System.exit(1);
                     }
                 }
@@ -510,7 +511,7 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
             }
         }
 
-        //btnTakePics.setEnabled(false); FIND ALTERNATIVE TO setENABLED() !!!!!!!!!!!
+        //btnTakePics.setEnabled(false); FIND ALTERNATIVE TO setENABLED(), because it can't disable fast enough the buttons !!!!!!!!!!!
 
         //btnTakePics.setEnabled(true);
     }
@@ -527,36 +528,38 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
     private void listenerBtnErase() {
         if (Files.isDirectory(path)) {
             ArrayList<String> arrList = new ArrayList<String>();
-            for(File file: (new File(path.toString())).listFiles()) if (file.isDirectory()) arrList.add(file.getName());
+            for(File file: (new File(path.toString())).listFiles()) if (file.isDirectory()) arrList.add(file.getName().toString());
 
             if (arrList.size() != 0) {
                 Collections.sort(arrList);
-                //Collections.reverse(arrList);
+                //Collections.reverse(arrList); // Not necessary
                 Object[] objList = arrList.toArray(new Object[arrList.size()]);
-                String strRemoveFolder = (String)JOptionPane.showInputDialog(null, "Please, choose a folder name to remove", "Remove folder", JOptionPane.INFORMATION_MESSAGE, null, objList, objList[0]);
+                String strRemoveFolder = (String)JOptionPane.showInputDialog(null, "<html>Please, choose a folder name to <b><i><u>REMOVE</u></i></b></html>", "Remove folder", JOptionPane.INFORMATION_MESSAGE, null, objList, objList[0]);
                 if (strRemoveFolder != null) {
                     if (Files.isDirectory(path)) {
                         Path p = Paths.get(path.toString() + System.getProperty("file.separator") + strRemoveFolder);
-                        if (Files.isDirectory(p)) delDir(new File(p.toString()), true);
+                        if (Files.isDirectory(p)) { // Train CNN with retrain.py file !!!
+                            delDir(new File(p.toString()), true);
+                        }
                         else {
-                            JOptionPane.showMessageDialog(null, "The folder \"" + p.toString() + "\" has already been erased", "Folder \"" + strRemoveFolder + "\" already deleted", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "<html>The folder \"" + p.toString() + "\" has <b><u><i>ALREADY</i></u></b> been <b><u><i>ERASED</i></u></b></html>", "Folder \"" + strRemoveFolder + "\" already deleted", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "<html>The main folder \"" + path.toString() + "\" has been <b><u><i>ERASED</i></u></b></html>\n<html>Please <b><u><i>RELAUNCH</i></u></b> the program to assure it's working correctly</html>\n<html><b><u><i>EXITING</i></u></b> the software <b><u><i>NOW</i></u></b> ...</html>", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
                         System.exit(1);
                     }
                 }
             }
-            else JOptionPane.showMessageDialog(null, "No folders found", "Error", JOptionPane.ERROR_MESSAGE);
+            else JOptionPane.showMessageDialog(null, "<html><b><u><i>NO FOLDERS</i></u></b> found</html>", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "<html>The main folder \"" + path.toString() + "\" has been <b><u><i>ERASED</i></u></b></html>\n<html>Please <b><u><i>RELAUNCH</i></u></b> the program to assure it's working correctly</html>\n<html><b><u><i>EXITING</i></u></b> the software <b><u><i>NOW</i></u></b> ...</html>", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
     }
 
-    private void listenerBtnRetrainCNN() {
+    private void listenerBtnTrainCNN() {
         if (Files.isDirectory(path)) {
             ArrayList<String> arrList = new ArrayList<String>();
             for (File file : (new File(path.toString())).listFiles()) if (file.isDirectory()) arrList.add(file.getName());
@@ -565,27 +568,24 @@ public class WebCam extends JFrame implements Runnable, WebcamListener, WindowLi
                 Collections.sort(arrList);
                 //Collections.reverse(arrList);
                 Object[] objList = arrList.toArray(new Object[arrList.size()]);
-                String strTrainFolder = (String) JOptionPane.showInputDialog(null, "Please, choose a folder name to train the CNN on", "Train folder", JOptionPane.INFORMATION_MESSAGE, null, objList, objList[0]);
+                String strTrainFolder = (String) JOptionPane.showInputDialog(null, "<html>Please, choose a folder name to <b><i><u>TRAIN THE CNN</u></i></b> on</html>", "Train folder", JOptionPane.INFORMATION_MESSAGE, null, objList, objList[0]);
                 if (strTrainFolder != null) {
                     if (Files.isDirectory(path)) {
                         Path p = Paths.get(path.toString() + System.getProperty("file.separator") + strTrainFolder);
-                        if (Files.isDirectory(p)) { // Train the CNN with retrain.py file
-                            //System.out.println("Training...");
-                            System.out.println(WebcamResolution.VGA.getSize() + "WebCam size");
-                            System.out.println(getContentPane().getSize() + " Content pane");
-                            System.out.println(getSize() + " No content pane");
+                        if (Files.isDirectory(p)) { // Train the CNN with retrain.py file !!!
+                            System.out.println("Training...");
                         }
                         else {
-                            JOptionPane.showMessageDialog(null, "The training folder \"" + p.toString() + "\" has been erased", "Training folder \"" + strTrainFolder + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "<html>The training folder \"" + p.toString() + "\" has been <b><u><i>ERASED</i></u></b></html>", "Folder \"" + strTrainFolder + "\" already deleted", JOptionPane.ERROR_MESSAGE);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "<html>The main folder \"" + path.toString() + "\" has been <b><u><i>ERASED</i></u></b></html>\n<html>Please <b><u><i>RELAUNCH</i></u></b> the program to assure it's working correctly</html>\n<html><b><u><i>EXITING</i></u></b> the software <b><u><i>NOW</i></u></b> ...</html>", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
                         System.exit(1);
                     }
                 }
-            } else JOptionPane.showMessageDialog(null, "No folders found", "Error", JOptionPane.ERROR_MESSAGE);
+            } else JOptionPane.showMessageDialog(null, "<html><b><u><i>NO FOLDERS</i></u></b> found</html>", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "The main folder \"" + path.toString() + "\" has been erased\nPlease relaunch the program to assure it's working correctly\nExiting the software now...", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "<html>The main folder \"" + path.toString() + "\" has been <b><u><i>ERASED</i></u></b></html>\n<html>Please <b><u><i>RELAUNCH</i></u></b> the program to assure it's working correctly</html>\n<html><b><u><i>EXITING</i></u></b> the software <b><u><i>NOW</i></u></b> ...</html>", "Main folder \"" + path.getFileName().toString() + "\" deleted", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
     }

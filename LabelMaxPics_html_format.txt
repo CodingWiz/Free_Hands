@@ -1,0 +1,1 @@
+jLabelMaxPics.setText("<html><b><u><i>MAX NUMBER</i></u></b> for training pics (</html>" + intMaxPics + "): ");
